@@ -1,0 +1,44 @@
+<html>
+<head>
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link href="./assets/css/fontawesome.css" rel="stylesheet">
+    <link href="./assets/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div style="width:100%;">
+        <div class="formBox">
+                <h1 class="form-heading">Enter details</h1>
+                <form class="form" action="/addData" method="post">
+                    <div class="boxOfLabelInput">
+                        <label class="formLabels" >Name</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        <input name="name" id="name" class="inputs" type="text" placeholder="Enter the name">
+                    </div>
+                    <div class="boxOfLabelInput">
+                        <label class="formLabels" >Description</label>
+                        <textarea class="inputs" name="desc" id="desc" cols="70" rows="7" placeholder="Enter the desc"></textarea>
+                    </div>
+                    <div class="boxOfLabelInput">
+                        <label class="formLabels">Size</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        <input name="size" class="inputs" type="number" id="size" placeholder="Enter the size">
+                    </div>
+
+                    
+                    
+                    <div class="buttons">
+                        <span class="notify"> Enter some value.</span>
+                        <!-- <div class="button-box2">
+                            <button id="cancelButton" class="btn2"><span class="buttonName2">Cancel</span></button>
+                        </div> -->
+                        <div class="button-box2">
+                            <button id="confirmButton" class="btn2" type="submit"><span style="color: white;">ADD</span></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        </body>
+</html>
