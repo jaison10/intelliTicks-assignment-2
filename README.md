@@ -10,13 +10,13 @@ Install the following:
 
 </br>
 
-Replace the API key and the table id in ```app.js``` file.  
-</br>
-
 Inside package.json, set the script as:
 ```bash
 "dev": "nodemon ./app.js",
 ```
+</br>
+
+Replace the API key and the table id in ```app.js``` file.  
 </br>
 
 ## Usage:
