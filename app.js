@@ -25,8 +25,8 @@ const PORT= process.env.PORT || 3000
 //     res.sendFile(path.join(__dirname+'/main.html'));
 
 // })
-
-app.get('/', (req, res)=>{    
+app.get('/getAllData', (req, res)=>{    
+    var allData = []
     base('Table 1').select({
         // Selecting the first 3 records in Grid view:
         maxRecords: 10,
@@ -36,19 +36,24 @@ app.get('/', (req, res)=>{
         // This function (`page`) will get called for each page of records.
     
         records.forEach(function(record) {
-            console.log('Retrieved', record.get('Name'));
+            // console.log('Retrieved', record.get('Name'));
+            // console.log(record);
+            console.log(record["fields"]);
+            allData.push(record["fields"]);
         });
         
         // To fetch the next page of records, call `fetchNextPage`.
         // If there are more records, `page` will get called again.
         // If there are no more records, `done` will get called.
         fetchNextPage();
-    
+        
     }, function done(err) {
         if (err) { console.error(err); return; }
+        console.log(allData);
+        return res.status(200).json(allData)
     });
     // res.sendFile(path.join(__dirname+'/main.html'));
-    return res.redirect('main.html')
+    // return res.redirect('main.html')
 })
 
 app.get('/add', (req, res)=>{
@@ -77,7 +82,7 @@ app.post('/addData', (req, res)=>{
         });
     });
 
-    return res.redirect('index.html')
+    return res.redirect('main.html')
 })
 
 app.listen(PORT);

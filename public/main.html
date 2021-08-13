@@ -7,6 +7,7 @@
         <link href="./assets/css/all.min.css" rel="stylesheet">
     </head>
     <body>
+        
 
         <div style="width:100%;">
             <div class="mainBox">
@@ -25,7 +26,7 @@
                         <div class="content">
                             <span class="emptyNote"> Oh, seems empty!</span>
                             <span class="AddedNotify"></span>
-                            <div class="listOfOnlyItems">
+                            <div class="listOfOnlyItems" id="allList">
                                 <!-- <div class="oneProp">
                                         <div class="space nameAndDelete">
                                             <span>
@@ -53,5 +54,45 @@
         </div>
         
     </body>
+    <script>
+        window.onload=()=>{
+            fetch("http://localhost:3000/getAllData").then(data => {
+                return data.json();
+            })
+            .then(post => {
+                console.log(post);
+
+                // const element = document.createElement("div");
+                // let attr = document.createAttribute("data-id");
+                // attr.value = id;
+                // element.setAttributeNode(attr);
+                // element.classList.add("oneProp");
+
+                var div = document.getElementById("allList")
+                if(post.length > 0){
+                    var empty = document.querySelector(".emptyNote");
+                    empty.style.visibility = "hidden";
+                }
+                for(var i = 0; i<post.length; i++){
+                    div.innerHTML += `<div data-id=${post[i].Size} class="oneProp">
+                                        <div class="space nameAndDelete">
+                                            <span>
+                                                ${post[i].Name} (${post[i].Size})
+                                            </span>
+                                            
+                                            <button class="delete-btn">
+                                                del
+                                            </button>
+                                        </div>
+                                        <span class="space">
+                                            ${post[i].Desc}
+                                        </span>
+
+                                </div>`;
+                }
+            });
+        }
+    </script>
+
     <script src="./assets/js/app.js"></script>
 </html>
