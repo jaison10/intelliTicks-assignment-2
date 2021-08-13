@@ -8,19 +8,20 @@ Install the following:
   <li>nodemon</li>
 </ul>
 
-Replace the API key and table id in ```app.js``` file.
+Replace the API key and table id in ```app.js``` file.  </br>
 
 
 Inside package.json, set the script as:
 ```bash
 "dev": "nodemon ./app.js",
 ```
+</br>
 
 ## Usage:
 ```bash
 npm run dev
 ```
 
-
+</br></br></br>
 
 <b><i>With love :heart: Jaison</i></b>
