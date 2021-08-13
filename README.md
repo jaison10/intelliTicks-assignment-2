@@ -18,4 +18,6 @@ Inside package.json, set the script as:
 npm run dev
 ```
 
-With love :heart: Jaison
+
+
+<b><i>With love :heart: Jaison</i></b>
