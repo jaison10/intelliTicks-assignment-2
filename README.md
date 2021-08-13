@@ -10,8 +10,7 @@ Install the following:
 
 </br>
 
-Replace the API key and table id in ```app.js``` file.  
-</br>
+Replace the API key and the table id in ```app.js``` file.  
 </br>
 
 Inside package.json, set the script as:
@@ -24,7 +23,6 @@ Inside package.json, set the script as:
 ```bash
 npm run dev
 ```
-
-</br></br>
+</br>
 
 <b><i>With love :heart: Jaison</i></b>
