@@ -15,16 +15,9 @@ app.use(bodyParser.urlencoded({
 }));
 const PORT= process.env.PORT || 3000
 
-// app.get('/', (req, res)=>{
-//     // res.sendFile('../../index.html');
-//     console.log("Im here");
-//     base('Table 1').find('recDO9GsjZFBoLTi2', function(err, record) {
-//         if (err) { console.error(err); return; }
-//         console.log('Retrieved', record.get('Name'));
-//     });
-//     res.sendFile(path.join(__dirname+'/main.html'));
-
-// })
+app.get('/',(req, res)=>{
+    return res.redirect('main.html')
+})
 app.get('/getAllData', (req, res)=>{    
     var allData = []
     base('Table 1').select({
@@ -32,19 +25,20 @@ app.get('/getAllData', (req, res)=>{
         maxRecords: 10,
         view: "Grid view"
     }).eachPage(
-        function page(records, fetchNextPage) {
-        // This function (`page`) will get called for each page of records.
-    
+        function page(records, fetchNextPage) {    
         records.forEach(function(record) {
             // console.log('Retrieved', record.get('Name'));
             // console.log(record);
             console.log(record["fields"]);
-            allData.push(record["fields"]);
+            // allData.push(record["fields"]);
+            allData.push({
+                "Name": record.fields["Name"],
+                "Desc": record.fields["Desc"],
+                "Size": record.fields["Size"],
+                "id": record.id
+            })
         });
         
-        // To fetch the next page of records, call `fetchNextPage`.
-        // If there are more records, `page` will get called again.
-        // If there are no more records, `done` will get called.
         fetchNextPage();
         
     }, function done(err) {
@@ -52,14 +46,26 @@ app.get('/getAllData', (req, res)=>{
         console.log(allData);
         return res.status(200).json(allData)
     });
-    // res.sendFile(path.join(__dirname+'/main.html'));
-    // return res.redirect('main.html')
 })
 
 app.get('/add', (req, res)=>{
     console.log("Add get ");
-    // res.sendFile(path.join(__dirname+'/add.html'));
     return res.redirect('add.html')
+})
+
+app.delete("/delete/:id", (req, res)=>{
+    var id = req.params.id;
+    console.log("DELETING ID IS: ", id);
+    
+    base('Table 1').destroy(id, function(err, deletedRecords) {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        console.log('Deleted', deletedRecords.length, 'records');
+    });
+
+    return res.status(200).json()
 })
 
 app.post('/addData', (req, res)=>{
