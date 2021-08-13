@@ -1,6 +1,4 @@
 const express = require('express')
-const fs = require('fs');
-const path = require('path');
 var bodyParser = require('body-parser');
 
 var Airtable = require('airtable');
